@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    nginx:
+        ports:
+            - '80:80'
+            - '443:443'
+        volumes:
+         - type: bind
+           source: ./configs/nginx.conf
+           target: /usr/local/openresty/nginx/conf/nginx.conf
+         - type: bind
+           source: ./configs/conf.d/
+           target: /opt/conf.d
+        restart: always
+        image: rezallion/openresty-full-solution
+        # build: ./
